@@ -28,9 +28,9 @@ router.post('/adicionar-carrinho', async function (req, res) {
                     }
                 ],
                 back_urls: {
-                    "success": "localhost:3000/feedback",
-                    "failure": "localhost:3000/feedback",
-                    "pending": "localhost:3000/feedback"
+                    "success": `${process.env.SITE_URL}/feedback`,
+                    "failure": `${process.env.SITE_URL}/feedback`,
+                    "pending": `${process.env.SITE_URL}/feedback`
                 },
                 "auto_return": "approved",
             },
