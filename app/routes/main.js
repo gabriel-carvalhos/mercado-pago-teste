@@ -22,9 +22,12 @@ router.post('/adicionar-carrinho', async function (req, res) {
             body: {
                 items: [
                     {
+                        id: "teste123", // UUID
                         title: name,
+                        picture_url: 'https://fretus.onrender.com/imgs/logotca.png',
                         quantity: 1,
-                        unit_price: Number(price)
+                        currency_id: 'BRL',
+                        unit_price: Number(price),
                     }
                 ],
                 back_urls: {
@@ -32,7 +35,18 @@ router.post('/adicionar-carrinho', async function (req, res) {
                     "failure": `${process.env.SITE_URL}/feedback`,
                     "pending": `${process.env.SITE_URL}/feedback`
                 },
-                "auto_return": "approved",
+                auto_return: "approved",
+                external_reference: "teste123",
+                payment_methods: {
+                    excluded_payment_methods: [
+                        { id: "bolbradesco" },
+                        { id: "pec" }
+                    ],
+                    excluded_payment_types: [
+                        { id: "debit_card" }
+                    ],
+                    installments: 1
+                }
             },
         })
 
