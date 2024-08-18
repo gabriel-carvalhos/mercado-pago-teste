@@ -50,7 +50,7 @@ router.post('/adicionar-carrinho', async function (req, res) {
             },
         })
 
-        // console.log(response)
+        console.log(response.id)
         res.redirect(`/comprar?name=${name}&price=${price}&id=${response.id}`)
     } catch (error) {
         console.log(error)
@@ -67,6 +67,18 @@ router.get('/comprar', function (req, res) {
 
 router.get('/feedback', function (req, res) {
     res.json({ data: req.query })
+})
+
+router.get('/search-preference', async function (req, res) {
+    try {
+        const id = "1952586456-2d6fbf42-6fa3-4de0-be0d-9244e066fe58"
+        const response = await preference.get({ preferenceId: id })
+
+        res.json(response)
+    } catch (error) {
+        console.log(error)
+        res.json({ error })
+    }
 })
 
 module.exports = router
