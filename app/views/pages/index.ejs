@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado Pago Compras</title>
+</head>
+<body>
+    <ul>
+        <li>
+            <h1>Livro</h1>
+            <p>Preço: R$30,00</p>
+            <form action="/adicionar-carrinho?name=book&price=30.00" method="POST">
+                <button name="name" value="livro">Comprar</button>
+            </form>
+        </li>
+
+        <li>
+            <h1>Videogame</h1>
+            <p>Preço: R$3000,00</p>
+            <form action="/adicionar-carrinho?name=videogame&price=3000.00" method="POST">
+                <button name="name" value="videogame">Comprar</button>
+            </form>
+        </li>
+
+        <li>
+            <h1>Notebook</h1>
+            <p>Preço: R$2000,00</p>
+            <form action="/adicionar-carrinho?name=notebook&price=2000.00" method="POST">
+                <button name="name" value="notebook">Comprar</button>
+            </form>
+        </li>
+    </ul>
+</body>
+</html>

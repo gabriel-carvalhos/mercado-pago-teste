@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar</title>
+</head>
+<body>
+    <a href="/">Voltar</a>
+    <h1>Finalize sua compra</h1>
+    <h2>Resumo</h2>
+    <ul>
+        <li>
+            <p>Produto: <%= name %></p>
+            <p>Preço: <%= price %></p>
+            <div id="wallet_container"></div>
+            <a href="https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=<%= id %>" target="_blank">
+                <button>Pagar com Mercado Pago</button>
+            </a>
+        </li>
+    </ul>
+
+    
+    <!-- SDK MercadoPago.js -->
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script>
+        const mp = new MercadoPago('APP_USR-169aca5e-5d1a-4d34-9d0d-ff9a8fe639c2');
+        const bricksBuilder = mp.bricks();
+
+        mp.bricks().create("wallet", "wallet_container", {
+            initialization: {
+                preferenceId: "<%= id %>",
+            },
+            customization: {
+                texts: {
+                    valueProp: 'smart_option',
+                },
+            },
+        });
+
+    </script>
+</body>
+</html>
